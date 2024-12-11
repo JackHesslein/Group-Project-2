@@ -4,7 +4,7 @@
 
 ### Slide 1
 
-![Slide 1](./slide1.png)
+![Slide 1](slide1.png)
 
 ### Slide 4
 
