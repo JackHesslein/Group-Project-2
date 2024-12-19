@@ -1,0 +1,99 @@
+header {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+a {
+    text-align: left;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.weatherSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.location-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.loc {
+    width: 25%;
+    text-align: center;
+    padding: 5px;
+}
+
+.date {
+    width: 25%;
+    text-align: center;
+    padding: 5px;
+}
+
+.weatherInfo {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    width:80%;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.symbol {
+    padding: 20px;
+}
+
+.temp-precip {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+.temp {
+    text-align: center;
+}
+
+.precip {
+    text-align: center;
+}
+
+.uv-windspeed {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+.uv {
+    text-align: center;
+} 
+
+.windspeed {
+    text-align: center;
+}
+
+.moreInfo {
+    text-align: center;
+    padding: 20px;
+} 
+
+.news {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
