@@ -20,6 +20,7 @@ Weather and News Dashboard is a web application that provides users with current
 - React Router
 - Axios
 - Vite
+- -Bootstrap: https://getbootstrap.com/
 
 ### Backend
 
