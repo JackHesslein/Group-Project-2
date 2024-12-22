@@ -22,28 +22,36 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login">
-      <h1>Login</h1>
-      <form className="login-form" onSubmit={handleLogin}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
+    <div className="login pt-5 text-center">
+      <h1 className='loginh1'>Login</h1>
+      <form className="login-form pt-5 text-center" onSubmit={handleLogin}>
+        <div className='d-flex flex-column text-center justify-content-center align-items-center'>
+          <label htmlFor="username">Username:</label>
+          <input
+            className='rounded-3 text-center'
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className='pt-4 d-flex flex-column text-center justify-content-center align-items-center'>
+          <label htmlFor="password pt-3">Password:</label>
+          <input
+            className='rounded-3 text-center'
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className='pt-4 text-center'>
+          <button type="submit">Login</button>
+        </div>
       </form>
-      <p>
+      <p className='pt-2'>
         Don't have an account? <a href="/register">Register here</a>
       </p>
     </div>

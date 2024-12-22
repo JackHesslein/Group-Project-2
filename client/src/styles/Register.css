@@ -1,8 +1,16 @@
-.register {
-    padding: 20px;
-  }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-  }
+.h1 {
+  font-size: 4rem;
+  text-decoration: underline;
+}
+
+#register-username {
+  width: 300px;
+}
+
+#register-password {
+  width: 300px;
+}
+
+#register-confirm-password {
+  width: 300px;
+}

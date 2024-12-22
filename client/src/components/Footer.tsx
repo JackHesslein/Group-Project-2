@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer>
+    <footer className='text-center pt-5 fw-semibold'>
       <p>© 2024 Weather and News Dashboard</p>
     </footer>
   );
