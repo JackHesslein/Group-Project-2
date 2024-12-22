@@ -1,0 +1,7 @@
+.home {
+    padding: 20px;
+  }
+  
+  .weather-card, .news-card {
+    margin: 10px 0;
+  }

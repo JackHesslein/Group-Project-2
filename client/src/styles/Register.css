@@ -1,0 +1,8 @@
+.register {
+    padding: 20px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
