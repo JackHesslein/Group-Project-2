@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import WeatherCard from '../components/WeatherCard';
 import NewsCard from '../components/NewsCard';
 import '../styles/Home.css';
