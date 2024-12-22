@@ -10,7 +10,7 @@
     "build": "npm run build-client && npm run build-server",
     "build-client": "cd client && npm run build",
     "build-server": "cd server && npm run build",
-    "start": "npm run start-server && npm run start-client",
+     "start": "npm run client:build && npm run server",
     "start-client": "cd client && npm run start",
     "start-server": "cd server && npm run start",
     "dev": "concurrently \"npm run dev-client\" \"npm run dev-server\"",

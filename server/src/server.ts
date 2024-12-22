@@ -1,6 +1,8 @@
+// filepath: /c:/Users/doc72/OneDrive/Documents/bootcamp/test code/project 2/server/src/server.ts
 import express from 'express';
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+import path from 'path';
 import appRoutes from './routes';
 
 dotenv.config();
@@ -10,6 +12,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+
+// Serve static files from the client's dist folder
+app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 // Routes
 app.use('/api', appRoutes);
@@ -32,7 +37,11 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-// Start server
+// Serve the client app for any other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

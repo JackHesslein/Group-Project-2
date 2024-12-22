@@ -4,7 +4,7 @@
   "description": "A project for bootcamp",
   "main": "src/server.ts",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "npm run build && node dist/server.js --ignore client",
     "build": "tsc",
     "dev": "nodemon src/server.ts"
   },
