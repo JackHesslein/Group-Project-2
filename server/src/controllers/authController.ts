@@ -40,29 +40,22 @@ export const login = async (req: Request, res: Response) => {
       console.log('Invalid password'); // Log if password is invalid
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
-  } catch (error) {
-    console.error('Error during login:', error); // Log the error
-    res.status(500).json({ error: 'Failed to login' });
-  }
-};
 
-export const getProfile = async (req: AuthenticatedRequest, res: Response) => {
-  try {
-    const userId = req.user?.id;
-    if (!userId) {
-      return res.status(401).json({ error: 'Unauthorized' });
+    // Update search history
+    const searchHistory = req.body.searchHistory || [];
+    if (!Array.isArray(searchHistory)) {
+      return res.status(400).json({ error: 'searchHistory must be an array' });
     }
-    const user = await User.findByPk(userId);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    res.json({
-      username: user.username,
-      searchHistory: user.searchHistory, // Include search history in the response
+    user.searchHistory = searchHistory;
+    await user.save();
+
+    const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, {
+      expiresIn: '1h',
     });
+
+    res.status(200).json({ message: 'Login successful', token });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch user profile' });
+    console.error('Error logging in:', error); // Log the error
+    res.status(500).json({ error: 'Failed to log in' });
   }
 };

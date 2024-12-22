@@ -40,13 +40,13 @@ User.init(
         if (user.changed('password')) {
           user.password = await argon2.hash(user.password);
         }
+        // Ensure searchHistory is a valid JSON array
+        if (user.searchHistory && !Array.isArray(user.searchHistory)) {
+          user.searchHistory = JSON.parse(user.searchHistory as unknown as string);
+        }
       },
     },
   }
 );
-
-User.prototype.comparePassword = async function (candidatePassword: string) {
-  return await argon2.verify(this.password, candidatePassword);
-};
 
 export default User;
