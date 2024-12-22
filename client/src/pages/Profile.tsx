@@ -45,9 +45,7 @@ const Profile: React.FC = () => {
   return (
     <div>
       <h1>Profile</h1>
-      <p>Username: {profile?.username}</p>
-      <h2>Search History</h2>
-      <p>Coming soon...</p>
+      {profile && <p>Username: {profile.username}</p>}
     </div>
   );
 };
