@@ -12,7 +12,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       const response = await loginUser({ username, password });
-      console.log('Login response:', response); // Log the response
+      //console.log('Login response:', response); // Log the response
       localStorage.setItem('token', response.data.token);
       history('/');
     } catch (error) {
