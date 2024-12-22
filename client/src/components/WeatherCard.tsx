@@ -27,10 +27,15 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
       <h2>Weather Information</h2>
       {weatherData && (
         <div>
-          <h3>{weatherData[0].city}</h3>
-          <p>{weatherData[0].iconDescription}</p>
-          <p>Temperature: {weatherData[0].tempF}°F</p>
-          <p>Humidity: {weatherData[0].humidity}%</p>
+          <h3>{weatherData[0].city}, {weatherData[0].state ? `${weatherData[0].state}, ` : ''}{weatherData[0].country}</h3>
+          {weatherData.map((day: any, index: number) => (
+            <div key={index}>
+              <p>{day.date}</p>
+              <p>{day.iconDescription}</p>
+              <p>Temperature: {day.tempF}°F</p>
+              <p>Humidity: {day.humidity}%</p>
+            </div>
+          ))}
         </div>
       )}
     </div>

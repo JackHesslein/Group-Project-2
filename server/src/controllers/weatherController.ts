@@ -19,6 +19,8 @@ interface Coordinates {
 class Weather {
   constructor(
     public city: string,
+    public state: string | null,
+    public country: string,
     public date: string,
     public icon: string,
     public iconDescription: string,
@@ -28,7 +30,7 @@ class Weather {
   ) {}
 }
 
-const fetchLocationData = async (query: string): Promise<Coordinates> => {
+const fetchLocationData = async (query: string): Promise<Coordinates & { city: string, state: string | null, country: string }> => {
   const response = await axios.get(
     `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${WEATHER_API_KEY}`
   );
@@ -36,6 +38,9 @@ const fetchLocationData = async (query: string): Promise<Coordinates> => {
   return {
     lat: locationData.lat,
     lon: locationData.lon,
+    city: locationData.name,
+    state: locationData.state || null,
+    country: locationData.country,
   };
 };
 
@@ -53,10 +58,12 @@ const fetchForecastData = async (coordinates: Coordinates) => {
   return response.data;
 };
 
-const parseCurrentWeather = (response: any, city: string) => {
+const parseCurrentWeather = (response: any, city: string, state: string | null, country: string) => {
   const currentWeather = response;
   return new Weather(
     city,
+    state,
+    country,
     new Date(currentWeather.dt * 1000).toLocaleDateString(),
     currentWeather.weather[0].icon,
     currentWeather.weather[0].description,
@@ -73,6 +80,8 @@ const buildForecastArray = (currentWeather: Weather, forecastData: any[]) => {
     if (index % 8 === 0 && index < 40) { // Limit to 5-day forecast, 8 data points per day
       forecastArray.push(new Weather(
         currentWeather.city,
+        currentWeather.state,
+        currentWeather.country,
         new Date(data.dt * 1000).toLocaleDateString(),
         data.weather[0].icon,
         data.weather[0].description,
@@ -94,10 +103,10 @@ export const getWeather = async (req: Request, res: Response) => {
   }
 
   try {
-    const coordinates = await fetchLocationData(city);
-    const currentWeatherData = await fetchCurrentWeatherData(coordinates);
-    const forecastData = await fetchForecastData(coordinates);
-    const currentWeather = parseCurrentWeather(currentWeatherData, city);
+    const { lat, lon, city: cityName, state, country } = await fetchLocationData(city);
+    const currentWeatherData = await fetchCurrentWeatherData({ lat, lon });
+    const forecastData = await fetchForecastData({ lat, lon });
+    const currentWeather = parseCurrentWeather(currentWeatherData, cityName, state, country);
     const forecast = buildForecastArray(currentWeather, forecastData.list);
     res.json(forecast);
   } catch (error) {
