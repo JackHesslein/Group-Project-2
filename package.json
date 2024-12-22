@@ -16,7 +16,7 @@
     "dev": "concurrently \"npm run dev-client\" \"npm run dev-server\"",
     "dev-client": "cd client && npm run dev",
     "dev-server": "cd server && npm run dev",
-    "seed": "ts-node server/src/seeds/seed.ts" 
+    "seed": "npx ts-node server/src/seeds/seed.ts" 
   },
   "keywords": [],
   "author": "Pink727",
