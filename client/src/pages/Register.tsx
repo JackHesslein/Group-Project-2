@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../utils/api';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const Register: React.FC = () => {
       const response = await registerUser({ username, password });
       console.log('User registered:', response.data);
       alert('Registration successful!');
+      navigate('/login'); // Redirect to login page
     } catch (error) {
       console.error('Error registering user:', error);
       alert('Registration failed. Please try again.');
