@@ -59,3 +59,16 @@ export const login = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to log in' });
   }
 };
+
+export const getProfile = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error('Error fetching profile:', error); // Log the error
+    res.status(500).json({ error: 'Failed to fetch profile' });
+  }
+};
