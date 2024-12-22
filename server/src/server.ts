@@ -1,6 +1,5 @@
-// filepath: /c:/Users/doc72/OneDrive/Documents/bootcamp/test code/project 2/server/src/server.ts
 import express from 'express';
-import { Sequelize } from 'sequelize';
+import { sequelize } from './config/database';
 import dotenv from 'dotenv';
 import path from 'path';
 import appRoutes from './routes';
@@ -19,29 +18,21 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 // Routes
 app.use('/api', appRoutes);
 
-// Database connection
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is not defined in the environment variables');
-}
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  logging: false,
-});
-
-sequelize.authenticate()
-  .then(() => {
+// Database connection and synchronization
+const startServer = async () => {
+  try {
+    await sequelize.authenticate();
     console.log('Database connected successfully.');
-  })
-  .catch(err => {
+    await sequelize.sync(); // Ensure models are synchronized with the database
+    console.log('Database synchronized successfully.');
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
     console.error('Unable to connect to the database:', err);
-  });
+    process.exit(1);
+  }
+};
 
-// Serve the client app for any other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+startServer();

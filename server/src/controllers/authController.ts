@@ -14,6 +14,7 @@ interface AuthenticatedRequest extends Request {
 export const register = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
+    console.log('Registering user:', { username, password }); // Log the user details
     const newUser = await User.create({ username, password });
     console.log('User registered:', newUser); // Log the new user details
     res.status(201).json({ message: 'User registered successfully' });
