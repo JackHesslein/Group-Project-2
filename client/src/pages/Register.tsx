@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { registerUser } from '../utils/api';
 
-const Register = () => {
+const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -12,10 +13,12 @@ const Register = () => {
       return;
     }
     try {
-      // Registration logic here
-      console.log('User registered:', { username, password });
+      const response = await registerUser({ username, password });
+      console.log('User registered:', response.data);
+      alert('Registration successful!');
     } catch (error) {
       console.error('Error registering user:', error);
+      alert('Registration failed. Please try again.');
     }
   };
 
