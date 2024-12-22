@@ -7,7 +7,9 @@ class User extends Model {
   public username!: string;
   public password!: string;
 
-  public comparePassword!: (candidatePassword: string) => Promise<boolean>;
+  public async comparePassword(candidatePassword: string): Promise<boolean> {
+    return await argon2.verify(this.password, candidatePassword);
+  }
 }
 
 User.init(
