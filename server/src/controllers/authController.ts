@@ -41,14 +41,6 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    // Update search history
-    const searchHistory = req.body.searchHistory || [];
-    if (!Array.isArray(searchHistory)) {
-      return res.status(400).json({ error: 'searchHistory must be an array' });
-    }
-    user.searchHistory = searchHistory;
-    await user.save();
-
     const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, {
       expiresIn: '1h',
     });

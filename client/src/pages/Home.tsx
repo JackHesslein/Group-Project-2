@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       try {
         await axios.post(
           '/api/auth/search-history', // Ensure this matches the route defined in authRoutes.ts
-          { query: searchInput },
+          { searchHistory: [searchInput] }, // Send searchHistory as an array
           {
             headers: {
               Authorization: `Bearer ${token}`,
