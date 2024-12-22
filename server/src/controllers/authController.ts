@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import User from '../models/user';
+import { sequelize } from '../config/database'; // Import the sequelize instance
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -15,6 +16,11 @@ export const register = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
     console.log('Registering user:', { username, password }); // Log the user details
+
+    // Log the database connection status
+    await sequelize.authenticate();
+    console.log('Database connection has been established successfully.');
+
     const newUser = await User.create({ username, password });
     console.log('User registered:', newUser); // Log the new user details
     res.status(201).json({ message: 'User registered successfully' });
