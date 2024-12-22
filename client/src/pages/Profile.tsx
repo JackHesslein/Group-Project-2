@@ -17,7 +17,6 @@ const Profile: React.FC = () => {
 
     const fetchProfile = async () => {
       try {
-        //console.log(`Token: ${token}`); // Log the token
         const response = await axios.get('/api/auth/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -49,12 +48,6 @@ const Profile: React.FC = () => {
       <p>Username: {profile?.username}</p>
       <h2>Search History</h2>
       <p>Coming soon...</p>
-      {/* Comment out the search history display */}
-      {/* <ul>
-        {profile?.searchHistory?.map((query: string, index: number) => (
-          <li key={index}>{query}</li>
-        ))}
-      </ul> */}
     </div>
   );
 };

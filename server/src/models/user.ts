@@ -6,7 +6,6 @@ class User extends Model {
   public id!: number;
   public username!: string;
   public password!: string;
-  public searchHistory!: string[];
 
   public comparePassword!: (candidatePassword: string) => Promise<boolean>;
 }
@@ -27,10 +26,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    searchHistory: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: true,
-    },
   },
   {
     sequelize,
@@ -39,10 +34,6 @@ User.init(
       beforeSave: async (user: User) => {
         if (user.changed('password')) {
           user.password = await argon2.hash(user.password);
-        }
-        // Ensure searchHistory is a valid JSON array
-        if (user.searchHistory && !Array.isArray(user.searchHistory)) {
-          user.searchHistory = JSON.parse(user.searchHistory as unknown as string);
         }
       },
     },
