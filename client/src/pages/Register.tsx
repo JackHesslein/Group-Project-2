@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { registerUser } from '../utils/api';
+import '../styles/Register.css';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -23,32 +24,42 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="register">
-      <form onSubmit={handleRegister}>
-        <p>Username</p>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        />
-        <br />
-        <p>Password</p>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <br />
-        <p>Confirm Password</p>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-        />
+    <div className="register pt-5 text-center">
+      <h1 className='h1'>Register</h1>
+      <form className="login-form pt-5 text-center" onSubmit={handleRegister}>
+        <div className='d-flex flex-column text-center justify-content-center align-items-center'>
+          <label>Username</label>
+          <input
+            className='rounded-3 text-center'
+            type="text"
+            id="register-username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className='pt-4 d-flex flex-column text-center justify-content-center align-items-center'>
+          <label>Password</label>
+          <input
+            className='rounded-3 text-center'
+            type="password"
+            id="register-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className='pt-4 d-flex flex-column text-center justify-content-center align-items-center'>
+          <label>Confirm Password</label>
+          <input
+            className='rounded-3 text-center'
+            type="password"
+            id="register-confirm-password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        <div className='pt-4 text-center'>
         <button type="submit">Register</button>
+        </div>
       </form>
     </div>
   );

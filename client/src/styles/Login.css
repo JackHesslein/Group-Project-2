@@ -1,8 +1,12 @@
-.login {
-  padding: 20px;
+#username {
+  width: 300px;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
+#password {
+  width: 300px;
+}
+
+.loginh1 {
+  font-size: 4rem;
+  text-decoration: underline;
 }
