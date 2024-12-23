@@ -47,7 +47,14 @@ const Home: React.FC = () => {
         >
         Search</button>
       </form>
-      <WeatherCard searchInput={searchQuery} />
+      <WeatherCard searchInput={searchQuery} main={{
+        temp: 0,
+        humidity: 0
+      }} sys={{
+        country: ''
+      }} weather={[]} wind={{
+        speed: 0
+      }} />
       <NewsCard searchInput={searchQuery} />
     </div>
   );
