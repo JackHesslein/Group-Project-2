@@ -26,9 +26,6 @@ interface WeatherCardProps {
   };
 }
 
-<<<<<<< HEAD
-const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput, main, sys, weather, wind }) => {
-=======
 interface WeatherData {
   city: string;
   state?: string;
@@ -39,7 +36,6 @@ interface WeatherData {
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
->>>>>>> e9823ac333f8163f37313890abe6d13931dc1ba6
   const [weatherData, setWeatherData] = useState<WeatherData[] | null>(null);
 
   useEffect(() => {
