@@ -6,8 +6,6 @@ import '../index.css';
 import '../styles/Home.css';
 import '../components/Footer';
 
-
-
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
@@ -60,9 +58,8 @@ const Home: React.FC = () => {
   );
 };
 
-
 function setCity(_inputCity: any) {
     throw new Error('Function not implemented.');
-  }
+}
 
 export default Home;

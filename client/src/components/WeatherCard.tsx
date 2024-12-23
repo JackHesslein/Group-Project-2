@@ -1,14 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { fetchWeather } from '../utils/api';
-
 import '../styles/weathercard.css';
+
+interface WeatherData {
+  city: string;
+  state?: string;
+  country: string;
+  date: string;
+  tempF: number;
+  humidity: number;
+}
 
 interface WeatherCardProps {
   searchInput: string;
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  sys: {
+    country: string;
+  };
+  weather: any[];
+  wind: {
+    speed: number;
+  };
 }
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
-  const [weatherData, setWeatherData] = useState<any>(null);
+const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput, main, sys, weather, wind }) => {
+  const [weatherData, setWeatherData] = useState<WeatherData[] | null>(null);
 
   useEffect(() => {
     if (searchInput) {
@@ -25,9 +44,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
   }, [searchInput]);
 
   return (
-
     <div className='WeatherCard'>
-
       <h2>Weather Information</h2>
       {weatherData && (
         <div>
@@ -36,23 +53,23 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
             <thead>
               <tr>
                 <th>Date</th>
-
-                <th>Description</th>
-
-          <tbody>
-            {weatherData.map((day: any, index: number) => (
-              <tr key={index}>
-                <td>{day.date}</td>
-                <td>{day.tempF}°F</td>
-                <td>{day.humidity}%</td>
+                <th>Temperature (°F)</th>
+                <th>Humidity (%)</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {weatherData.map((day, index) => (
+                <tr key={index}>
+                  <td>{day.date}</td>
+                  <td>{day.tempF}°F</td>
+                  <td>{day.humidity}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
-
   );
 };
 
