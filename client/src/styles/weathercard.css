@@ -1,24 +1,43 @@
-.weather-card {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  
-  .weather-card h2 {
-    text-align: center;
-  }
-  
-  .weather-card table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .weather-card th, .weather-card td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  .weather-card th {
-    background-color: #f2f2f2;
-  }
+/* WeatherCard.css */
+
+.WeatherCard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+.WeatherCard h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.WeatherCard h3 {
+  margin: 8px 0;
+}
+
+.WeatherCard table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.WeatherCard th, .WeatherCard td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.WeatherCard th {
+  background-color: #f2f2f2;
+}
+
+.WeatherCard tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.WeatherCard tr:hover {
+  background-color: #ddd;
+}
