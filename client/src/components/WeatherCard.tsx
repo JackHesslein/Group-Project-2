@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchWeather } from '../utils/api';
-import '../styles/WeatherCard.css';
+import '../styles/weathercard.css';
 
 interface WeatherCardProps {
   searchInput: string;
