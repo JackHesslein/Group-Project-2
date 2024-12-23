@@ -1,15 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchWeather } from '../utils/api';
+import '../styles/weathercard.css';
 
-const WeatherCard = ({ searchInput }: { searchInput: string }) => {
-  const [weatherData, setWeatherData] = useState<any[]>([]);
+interface WeatherCardProps {
+  searchInput: string;
+}
+
+interface WeatherData {
+  city: string;
+  state?: string;
+  country: string;
+  date: string;
+  tempF: number;
+  humidity: number;
+}
+
+const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
+  const [weatherData, setWeatherData] = useState<WeatherData[] | null>(null);
 
   useEffect(() => {
     if (searchInput) {
       const handleSearch = async () => {
         try {
-          const response = await fetch(`API_URL_HERE?query=${searchInput}`);
-          const data = await response.json();
-          setWeatherData(data);
+          const response = await fetchWeather(searchInput);
+          setWeatherData(response.data);
         } catch (error) {
           console.error('Error fetching weather data:', error);
         }
@@ -33,7 +47,7 @@ const WeatherCard = ({ searchInput }: { searchInput: string }) => {
               </tr>
             </thead>
             <tbody>
-              {weatherData.map((day: any, index: number) => (
+              {weatherData.map((day, index) => (
                 <tr key={index}>
                   <td>{day.date}</td>
                   <td>{day.tempF}°F</td>
