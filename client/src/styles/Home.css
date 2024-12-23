@@ -1,7 +1,77 @@
-.home {
-    padding: 20px;
-  }
-  
-  .weather-card, .news-card {
-    margin: 10px 0;
-  }
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  color: #fff;
+  text-align: center;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.home-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: 200px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #0078ff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #005fcc;
+}
+
+.error-message {
+  color: #ff4d4d;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.weather-info {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.weather-info h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.weather-info p {
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
