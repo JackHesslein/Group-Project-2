@@ -1,5 +1,6 @@
 .register {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -10,14 +11,16 @@
   text-decoration: underline;
 }
 
-#register-username {
+#register-username, #register-password, #register-confirm-password {
   width: 300px;
 }
 
-#register-password {
-  width: 300px;
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#register-confirm-password {
-  width: 300px;
+.register-form .form-group {
+  margin-bottom: 1rem;
 }
