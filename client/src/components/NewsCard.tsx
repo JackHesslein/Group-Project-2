@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchNews } from '../utils/api';
+import '../styles/Newscard.css';
 
 interface NewsCardProps {
   searchInput: string;

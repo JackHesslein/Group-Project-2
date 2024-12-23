@@ -1,39 +1,39 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 400px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
+/* NewsCard.css */
 
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.weather-icon {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-}
-
-.temperature {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.description {
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.location {
-    font-size: 16px;
-    margin-top: 20px;
-}
+.NewsCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+  }
+  
+  .NewsCard h2 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .NewsCard h3 {
+    margin: 8px 0;
+  }
+  
+  .NewsCard img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .NewsCard p {
+    margin: 8px 0;
+  }
+  
+  .NewsCard a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .NewsCard a:hover {
+    text-decoration: underline;
+  }
