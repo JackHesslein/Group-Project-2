@@ -1,0 +1,39 @@
+/* NewsCard.css */
+
+.NewsCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+  }
+  
+  .NewsCard h2 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .NewsCard h3 {
+    margin: 8px 0;
+  }
+  
+  .NewsCard img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .NewsCard p {
+    margin: 8px 0;
+  }
+  
+  .NewsCard a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .NewsCard a:hover {
+    text-decoration: underline;
+  }
