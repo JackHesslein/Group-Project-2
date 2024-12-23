@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { fetchWeather } from '../utils/api';
+import React, { useState, useEffect } from 'react';
 
-import '../styles/weathercard.css';
-
-interface WeatherCardProps {
-  searchInput: string;
-}
-
-const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
-  const [weatherData, setWeatherData] = useState<any>(null);
+const WeatherCard = ({ searchInput }: { searchInput: string }) => {
+  const [weatherData, setWeatherData] = useState<any[]>([]);
 
   useEffect(() => {
     if (searchInput) {
       const handleSearch = async () => {
         try {
-          const response = await fetchWeather(searchInput);
-          setWeatherData(response.data);
+          const response = await fetch(`API_URL_HERE?query=${searchInput}`);
+          const data = await response.json();
+          setWeatherData(data);
         } catch (error) {
           console.error('Error fetching weather data:', error);
         }
@@ -25,9 +19,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
   }, [searchInput]);
 
   return (
-
     <div className='WeatherCard'>
-
       <h2>Weather Information</h2>
       {weatherData && (
         <div>
@@ -36,23 +28,23 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
             <thead>
               <tr>
                 <th>Date</th>
-
-                <th>Description</th>
-
-          <tbody>
-            {weatherData.map((day: any, index: number) => (
-              <tr key={index}>
-                <td>{day.date}</td>
-                <td>{day.tempF}°F</td>
-                <td>{day.humidity}%</td>
+                <th>Temperature (°F)</th>
+                <th>Humidity (%)</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {weatherData.map((day: any, index: number) => (
+                <tr key={index}>
+                  <td>{day.date}</td>
+                  <td>{day.tempF}°F</td>
+                  <td>{day.humidity}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
-
   );
 };
 
