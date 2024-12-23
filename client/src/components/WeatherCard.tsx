@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchWeather } from '../utils/api';
-import './styles/WeatherCard.css';
 
+import '../styles/weathercard.css';
 
 interface WeatherCardProps {
   searchInput: string;
@@ -25,7 +25,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
   }, [searchInput]);
 
   return (
+
     <div className='WeatherCard'>
+
       <h2>Weather Information</h2>
       {weatherData && (
         <div>
@@ -34,10 +36,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ searchInput }) => {
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Temperature (°F)</th>
-                <th>Humidity (%)</th>
-              </tr>
-            </thead>
+
+                <th>Description</th>
+
           <tbody>
             {weatherData.map((day: any, index: number) => (
               <tr key={index}>
